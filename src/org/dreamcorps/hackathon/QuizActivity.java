@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class QuizActivity extends Activity {
 
@@ -15,7 +16,8 @@ public class QuizActivity extends Activity {
 	private Button btn2;
 	private Button btn3;
 	private Button btn4;
-	
+	private TextView textView;
+	private DBDAO DatabaseDAO;
 	private int rightAnswerID = -1;
 	private String rightAnswerStr = new String("");
 	
@@ -24,12 +26,17 @@ public class QuizActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_quiz);
 		
+		DatabaseDAO = new DBDAO(this);
+		DatabaseDAO.open();
+		
 		btn1 = (Button) this.findViewById(R.id.button1);
 		btn2 = (Button) this.findViewById(R.id.button2);
 		btn3 = (Button) this.findViewById(R.id.button3);
 		btn4 = (Button) this.findViewById(R.id.button4);
-		
-		
+		textView = (TextView) this.findViewById(R.id.textView1);
+		Question Q = DatabaseDAO.getQuestion();
+		//set Answer
+		textView.setText(Q.getQ());
 		//set choices and right answer ID
 		setChoices();
 		
@@ -63,7 +70,7 @@ public class QuizActivity extends Activity {
 	}
 
 	/*
-	 * setChoices Sets Choices randomly and records right answer ID and answer string。
+	 * setChoices Sets Choices randomly and records right answer ID and answer string銆�
 	 * <p>Right answer ID is saved in rightAnswerID. <br>
 	 * Right Answer String is saved in rightAnswerStr.<br>
 	 * 
