@@ -19,6 +19,7 @@ private int QID = 1;
 public DBDAO(Context context){
 	dbHelper = new DBConn(context);
 }
+//encounters problem here
 public void open() throws SQLException {
     database = dbHelper.getWritableDatabase();
   }
@@ -42,9 +43,11 @@ public Question getQuestion(){
 
 public void addSampleQuestions(){
 	Cursor rs = database.query(DBConn.Table_Name,allColumns,null,null,null,null,null,null);
+	//only add sample questions when the table is empty
 	if (rs.moveToFirst()==false){
-		//add sample questions here, otherwise, do nothing
-		
+		//add sample questions here
+		//database.insert(table, nullColumnHack, values);
+		//database.insert();
 		
 	}
 	

@@ -20,7 +20,7 @@ public class DBConn extends SQLiteOpenHelper {
 		      + " integer primary key autoincrement, " + Column_Q
 		      + " text not null,"+Column_A
 		      + " integer not null,"
-		      +"Option1"+"text not null,"
+		      +"Option1 text not null,"
 		      +"option2 text not null,"
 		      +"option3 text not null,"		      
 		      +"option4 text not null);";

@@ -15,13 +15,15 @@ import android.widget.Button;
 import android.os.Build;
 
 public class MainActivity extends Activity {
+	private DBDAO db;
 		@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		/*setContentView(R.layout.main);
 		 */
-		DBDAO db = new DBDAO(this);
-		db.addSampleQuestions();
+		db = new DBDAO(this);
+		db.open();
+		//db.addSampleQuestions();
 		setContentView(R.layout.activity_main);
 		
 		/*if (savedInstanceState == null) {
@@ -43,6 +45,7 @@ public class MainActivity extends Activity {
 			bundle.putInt("Count", 0);
 			it.putExtras(bundle);
 			//execute the intent
+			db.close();
 			startActivity(it);
 			
 
