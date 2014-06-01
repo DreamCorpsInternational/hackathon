@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -21,7 +22,7 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		/*setContentView(R.layout.main);
 		 */
-
+		DBDAO database = new DBDAO(this);
 		setContentView(R.layout.activity_main);
 		
 		/*if (savedInstanceState == null) {
