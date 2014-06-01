@@ -12,7 +12,7 @@ private SQLiteDatabase database;
 private SQLiteOpenHelper dbHelper;
 private Question Q = new Question();
 private String[] allColumns = { DBConn.Column_ID,
-	      DBConn.Column_A,DBConn.Column_Q};
+	      DBConn.Column_A,DBConn.Column_Q,"option1","option2","option3","option4"};
 private int QID = 1;
 
 
@@ -32,18 +32,26 @@ public Question getQuestion(){
 	String selection  = "_ID="+QID;
 	Cursor rs = database.query(DBConn.Table_Name,allColumns,selection,null,null,null,null,null);
 	Q.setQ(rs.getString(2));	
-	Q.setA(rs.getString(3));
-	//Q.setOptions();
+	Q.setA(rs.getInt(3));
+	String[] Options = {rs.getString(4),rs.getString(5),rs.getString(6),rs.getString(7)};
+	Q.setOptions(Options);
 	QID +=1;
 	rs.close();
 	return Q;
 }
 
-public boolean checkAnswer(){
+public void addSampleQuestions(){
+	Cursor rs = database.query(DBConn.Table_Name,allColumns,null,null,null,null,null,null);
+	if (rs.moveToFirst()==false){
+		//add sample questions here, otherwise, do nothing
+		
+		
+	}
 	
-	return false;
+	
+	
+	
 }
-
 
 
 }

@@ -20,7 +20,8 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		/*setContentView(R.layout.main);
 		 */
-		
+		DBDAO db = new DBDAO(this);
+		db.addSampleQuestions();
 		setContentView(R.layout.activity_main);
 		
 		/*if (savedInstanceState == null) {

@@ -15,6 +15,11 @@ public class FeedbackActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_feedback);
+		//get extra info from QuizActivity
+		Intent PreviousIntent = getIntent();
+		Bundle Extras = PreviousIntent.getExtras();
+		int rightAnswerID = Extras.getInt("answerID");
+		int SelectedID = Extras.getInt("selectedID");
 		
 		Button btn = (Button) this.findViewById(R.id.startoverbtn);
 		// set the click event of start quiz button
@@ -31,8 +36,9 @@ public class FeedbackActivity extends Activity {
 				finish();
 			}
 		});
-
 		Button btn2 = (Button) this.findViewById(R.id.NextBtn);
+		if (rightAnswerID==SelectedID)
+		{
 		// set the click event of start quiz button
 		btn2.setOnClickListener(new OnClickListener() {
 			@Override
@@ -53,6 +59,8 @@ public class FeedbackActivity extends Activity {
 				//finish feedback activity
 				finish();
 			}
-		});
+		});}
+		else
+			btn2.setVisibility(0);
 	}
 }

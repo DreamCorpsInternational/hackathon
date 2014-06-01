@@ -19,7 +19,11 @@ public class DBConn extends SQLiteOpenHelper {
 		      + Table_Name + "(" + Column_ID
 		      + " integer primary key autoincrement, " + Column_Q
 		      + " text not null,"+Column_A
-		      + " text not null);";
+		      + " integer not null,"
+		      +"Option1"+"text not null,"
+		      +"option2 text not null,"
+		      +"option3 text not null,"		      
+		      +"option4 text not null);";
 	 
 
 

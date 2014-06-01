@@ -35,10 +35,12 @@ public class QuizActivity extends Activity {
 		btn4 = (Button) this.findViewById(R.id.button4);
 		textView = (TextView) this.findViewById(R.id.textView1);
 		Question Q = DatabaseDAO.getQuestion();
-		//set Answer
+		String[] Options = Q.getOptions();
+		//set question
 		textView.setText(Q.getQ());
+		rightAnswerID = Q.getA();
 		//set choices and right answer ID
-		setChoices();
+		setChoices(Options);
 		
 		btn1.setOnClickListener(new OnClickListener() {
 			@Override
@@ -76,16 +78,13 @@ public class QuizActivity extends Activity {
 	 * 
 	 * @return void
 	 */
-	protected void setChoices() {
+	protected void setChoices(String[] Options) {
 		//TODO Here set four choices in the button text
-		btn1.setText("choice-1 from DB");
-		btn2.setText("choice-2 from DB");
-		btn3.setText("choice-3 from DB");
-		btn4.setText("choice-4 from DB");
-		
-		//TODO Here set rightAnswer
-		rightAnswerID = 0;
-		rightAnswerStr = "";
+		btn1.setText(Options[0]);
+		btn2.setText(Options[1]);
+		btn3.setText(Options[2]);
+		btn4.setText(Options[3]);
+
 	}
 	
 	
