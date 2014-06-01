@@ -16,13 +16,14 @@ import android.widget.Button;
 import android.os.Build;
 
 public class MainActivity extends Activity {
-
+	private DBDAO databaseDAO;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		/*setContentView(R.layout.main);
 		 */
-		DBDAO database = new DBDAO(this);
+		databaseDAO = new DBDAO(this);
+		databaseDAO.open();
 		setContentView(R.layout.activity_main);
 		
 		/*if (savedInstanceState == null) {
@@ -70,6 +71,17 @@ public class MainActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	
+	
+	  @Override
+	  protected void onPause() {
+	    databaseDAO.close();
+	    super.onPause();
+	  }
+
+
+	
 
 	/**
 	 * A placeholder fragment containing a simple view.
@@ -87,5 +99,7 @@ public class MainActivity extends Activity {
 			return rootView;
 		}
 	}
+	
+
 
 }
