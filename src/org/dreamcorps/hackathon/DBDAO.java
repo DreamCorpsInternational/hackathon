@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBDAO {
 @SuppressWarnings("unused")
 private SQLiteDatabase database;
-private SQLiteOpenHelper dbHelper;
+private DBConn dbHelper;
 private Question Q = new Question();
 private String[] allColumns = { DBConn.Column_ID,
 	      DBConn.Column_A,DBConn.Column_Q,"option1","option2","option3","option4"};
@@ -21,7 +21,7 @@ public DBDAO(Context context){
 }
 //encounters problem here
 public void open() throws SQLException {
-    database = dbHelper.getWritableDatabase();
+	database = dbHelper.getWritableDatabase();
   }
 
 public void close() {
